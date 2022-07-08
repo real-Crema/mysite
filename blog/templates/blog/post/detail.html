@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block global_nav %}
+    <li style="float:left">
+        <a href="{% url 'blog:post_list' %}">HOME</a>
+    </li>
+    <li><a href="">MUSIC</a></li>
+    <li><a href="">CODING</a></li>
+    <li><a href="">PROJECTS</a></li>
+{% endblock %}
+{% block content %}
+    <article id="post-detail" class="card">
+        <h1>{{ post.title }}</h1>
+        <p class="date">发表于 {{ post.publish }}</p>
+        {{ post.body|linebreaks }}
+    </article>
+{% endblock %}

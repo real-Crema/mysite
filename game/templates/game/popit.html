@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no">
+    <title>Pop It!</title>
+    <link href="{% static "game/css/popit.css" %}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.4.1/dist/socket.io.min.js"></script>
+</head>
+<body id="body">
+    <main id="main">
+        <section id="welcome-page">
+            <section id="menu-viewport">
+                <div id="btn-single-player" class="card btn btn-float"><span>单人游戏</span></div>
+                <div id="btn-multiplayer" class="card btn btn-float"><span>和朋友一起玩 !</span>
+                    <div id="ui-multiplayer">
+                        <div>
+                            <label>你的房间号是：</label><br>
+                            <label id="client-room-id" style="color: slategray; font-size: 60px; background-color: initial"></label>
+                        </div>
+                        <hr style="width: 1px; height: 70%; border-width: 0; background-color:lightslategray">
+                        <form onsubmit="return false">
+                            <label for="input-room-id">或者加入一局游戏：</label><br>
+                            <input type="text" pattern="\d*" id="input-room-id" name="quantity" maxlength="4" autocomplete="off">
+                        </form>
+                        <p id="prompt" style="color: #79B4B7; background-color: initial"></p>
+                    </div>
+                </div>
+                <div id="btn-tutorial" class="btn">
+                    <img src="{% static "game/resources/lightbulb.svg" %}" width="32" alt="tutorial">
+                    <div style="color: lightslategray">查看教程</div>
+                </div>
+                <div id="home-btn" class="card btn btn-float" style="color: slategray; background-color: ghostwhite">返回</div>
+                <div id="ui-single-player"></div>
+            </section>
+        </section>
+        <section id="game-viewport">
+            <div id="chess-board" class="card">
+                <svg style="z-index: 3; width: 100%; height: 100%">
+                    <circle id="pop-up-cue" class="piece" r="100" cx="50%" cy="50%" fill="transparent" stroke="white" stroke-width="10"
+                            style="opacity: 0; transform-origin: center"></circle>
+                </svg>
+                <canvas id="canvas-separation-lines" width="540" height="540"></canvas>
+                <svg id="svg-pieces" width="100%" height="100%">
+                    <defs>
+                        <filter id="filter-piece" x="-0.1" y="-0.1" width="150%" height="150%">
+                            <feDropShadow dx="3" dy="3" stdDeviation="4" flood-color="rgba(136, 136, 136, 0.4)"></feDropShadow>
+                        </filter>
+                    </defs>
+                </svg>
+                <div id="square-container"></div>
+            </div>
+        </section>
+        <section id="info-viewport">
+            <svg id="svg-players" width="540" height="60">
+                <circle id="player-icon" class="piece" fill="transparent" r="20" cx="50%" cy="50%" stroke="white" stroke-width="4"></circle>
+            </svg>
+            <div id="color-panel">
+                <svg width="450" height="260"></svg>
+            </div>
+            <div id="indicators">
+                <img src="{% static "game/resources/angle-up.svg" %}" id="arrow-now-playing" width="30" alt="Now Playing">
+                <img src="{% static "game/resources/rotate.svg" %}" class="btn" id="btn-change-color" width="30" alt="Change Color">
+                <img src="{% static "game/resources/xmark.svg" %}" class="btn" id="btn-close-panel" width="40" height="40" alt="Close">
+            </div>
+        </section>
+    </main>
+    <script src="{% static "game/frontend/screen.js" %}"></script>
+    <script src="{% static "game/frontend/main.js" %}" type="module"></script>
+</body>

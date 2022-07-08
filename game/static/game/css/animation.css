@@ -1,0 +1,33 @@
+/* 翻转图片 */
+#avatar img:last-child, #avatar:hover img:first-child{
+    transform: rotateY(180deg);
+    transition: all 250ms cubic-bezier(0.8, 0, 1, 1);
+}
+
+#avatar img:first-child, #avatar:hover img:last-child {
+    transition: all 500ms cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+#avatar:hover img:last-child {
+    transform: rotateY(360deg);
+}
+
+/* 放大卡片 */
+.card:not(#post-detail):hover {
+    transform: scale(1.05, 1.05);
+    box-shadow: 0 4px 20px 4px rgba(200, 200, 200, 0.5);
+}
+
+.card:not(#post-detail) {
+    transition: 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* 鼠标位于标题上方 */
+.clickable-h:hover {
+    border-right: 6px solid #79B4B7;
+}
+
+.clickable-h {
+    border-right: 0 solid;
+    transition: 200ms cubic-bezier(0.39, 0.58, 0.57, 1);
+}

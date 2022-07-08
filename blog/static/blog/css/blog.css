@@ -1,0 +1,141 @@
+body {
+    margin:0;
+    padding:0;
+    min-width: 700px;
+    font-family:helvetica, sans-serif;
+    background-color: #f4f4f4;
+}
+
+a {
+    color:#79B4B7;
+    text-decoration:none;
+}
+
+h1 {
+    color: #333333;
+    font-size: xxx-large;
+    font-weight:normal;
+    border-bottom:1px solid #bbb;
+    padding:0 0 10px 0;
+}
+
+h2 {
+    font-weight:normal;
+    margin: 10px 0 0;
+}
+
+p {
+    color: #333333;
+}
+
+/* 顶部导航栏 */
+.gn-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 46px;
+    border-bottom:1px solid #bbb;
+    z-index: 1;
+}
+
+.gn-list li {
+    float: right;
+}
+
+.gn-list li a {
+    display: block;
+    color: #333333;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.15s;
+}
+
+.gn-list li.active a {
+    padding-bottom: 10px;
+    border-bottom: 4px solid #79B4B7;
+}
+
+.gn-list li a:hover {
+    color: ghostwhite;
+    background-color: #79B4B7;
+}
+
+.gn-list li.search a:hover img{
+    filter: brightness(10);
+}
+
+/* 主显示区域 */
+main {
+    display: flex;
+    justify-content: center;
+    margin: 46px;
+}
+
+/* 正文和边栏 */
+#content {
+    float:left;
+    flex-basis: 680px;
+    width:60%;
+    padding:30px 17px 0;
+}
+
+.card {
+    background-color: ghostwhite;
+    padding: 32px;
+    margin: 17px 0;
+    border-radius: 17px;
+    box-shadow: 0 4px 12px 0 rgba(200, 200, 200, 0.5);
+}
+
+#sidebar {
+    float: right;
+    flex-basis: 240px;
+    flex-shrink: 0.3;
+    width: 25%;
+    height: 100%;
+    margin: 150px 17px 17px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 70px;
+}
+
+#avatar {
+    position: relative;
+    height: 200px;
+    margin: 10px 0;
+    perspective: 800px;
+}
+
+#avatar img {
+    position: absolute;
+    top: 0;
+    left: calc((100% - 200px) / 2);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+#sidebar p {
+    text-align: center;
+    margin-top: 32px;
+}
+
+p.date {
+    color: #b6b6b6;
+    font-family: georgia, serif;
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* 分页 */
+.pagination {
+    margin:40px 0;
+    color: slategray;
+    font-weight:bold;
+}

@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% block title %}Crema's Blog{% endblock %}
+{% block global_nav %}
+    <li class="active" style="float:left">
+        <a href="{% url 'blog:post_list' %}">HOME</a>
+    </li>
+    <li><a href="">MUSIC</a></li>
+    <li><a href="">CODING</a></li>
+    <li><a href="">PROJECTS</a></li>
+{% endblock %}
+{% block content %}
+    <h1>最近更新</h1>
+    {% for post in posts %}
+        <article class="card">
+            <a href="{{ post.get_absolute_url }}">
+                <h2 class="clickable-h">{{ post.title }}</h2>
+            </a>
+            <p class="date">
+                {{ post.get_publish_date }}
+            </p>
+            {{ post.body|truncatewords:30|linebreaks }}
+        </article>
+    {% endfor %}
+    {% include "pagination.html" with page=page_obj %}
+{% endblock %}

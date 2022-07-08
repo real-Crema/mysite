@@ -1,0 +1,280 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    overflow: hidden;
+}
+
+main {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.card {
+    position: absolute;
+    background-color: ghostwhite;
+    padding: 20px;
+    border-radius: 17px;
+    box-shadow: 4px 4px 16px 0 rgba(200, 200, 200, 0.5);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#game-viewport {
+    position: absolute;
+    width: 540px;
+    height: 540px;
+    left: calc((100% - 540px) / 2);
+    top: calc((100% - 540px) / 2 - 60px);
+}
+
+#chess-board {
+    padding: 0;
+    left: 0;
+    top: 0;
+    width: 540px;
+    height: 540px;
+}
+
+#canvas-separation-lines {
+    position: absolute;
+    border-radius: 17px;
+    z-index: 1;
+}
+
+#game-viewport svg {
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#svg-pieces {
+    border-radius: 17px;
+    z-index: 2;
+}
+
+.piece {
+    filter: url(#filter-piece);
+    will-change: transform;
+}
+
+.btn-piece {
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.btn-piece:hover {
+    filter: url(#filter-piece);
+    fill-opacity: 0.7;
+    transition: 50ms;
+}
+
+.btn-piece-forbidden {
+    filter: url(#filter-piece);
+    fill-opacity: 0.5;
+}
+
+.invisible-square {
+    position: absolute;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.bg-square {
+    position: absolute;
+    transition: 200ms;
+    z-index: 0;
+}
+
+.bg-square-hover {
+    position: absolute;
+    background-color: #f2f2f2;
+    transition: 50ms;
+    z-index: 0;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#info-viewport {
+    position: absolute;
+    width: 540px;
+    height: 120px;
+    top: calc(50% + 240px);
+    left: calc((100% - 540px) / 2);
+    z-index: 5;
+}
+
+#info-viewport #svg-players {
+    position: absolute;
+    top: 0;
+    left: calc((100% - 540px) / 2);
+}
+
+#info-viewport #color-panel {
+    position: absolute;
+    width: 450px;
+    height: 260px;
+    top: -200px;
+    left: calc((100% - 450px) / 2);
+    display: none;
+    border-radius: 17px;
+    background-color: rgba(248, 248, 255, 0.7);
+    box-shadow: 0 0 60px 60px rgba(248, 248, 255, 0.7);
+}
+
+#info-viewport #indicators {
+    width: 540px;
+    height: 60px;
+    position: absolute;
+    top: 60px;
+    user-select: none;
+}
+
+#arrow-now-playing, #btn-change-color {
+    position: absolute;
+    left: calc((100% - 30px) / 2);
+}
+
+#btn-close-panel {
+    left: calc((100% - 40px) / 2);
+    top: -5px;
+}
+
+#arrow-now-playing, #btn-close-panel {
+    opacity: 0;
+    display: none;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#welcome-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+#welcome-page #menu-viewport {
+    position: absolute;
+    width: 540px;
+    height: 540px;
+    left: calc((100% - 540px) / 2);
+    top: calc((100% - 540px) / 2 - 60px);
+}
+
+.btn {
+    user-select: none;
+    text-align: center;
+    position: absolute;
+    cursor: pointer;
+    font-family: helvetica, sans-serif;
+    transition: 200ms;
+}
+
+.btn:hover {
+    filter: opacity(0.5);
+    transition: 50ms;
+}
+
+.btn-float {
+    width: 160px;
+    height: 27px;
+    font-size: 20px;
+    color: slategray;
+}
+
+#btn-single-player {
+    left: calc((100% - 200px) / 2 - 110px);
+    top: 400px;
+}
+
+#btn-multiplayer {
+    left: calc((100% - 200px) / 2 + 110px);
+    top: 400px;
+}
+
+#home-btn {
+    left: calc((100% - 200px) / 2);
+    top: 400px;
+    opacity: 0;
+    display: none;
+}
+
+#btn-tutorial {
+    width: 80px;
+    height: 80px;
+    left: calc((100% - 150px) / 2 + 250px);
+    top: 30px;
+}
+
+#ui-multiplayer {
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    user-select: none;
+    opacity: 0;
+    display: none;
+}
+
+#ui-multiplayer label {
+    color: slategray;
+    font-size: 20px;
+}
+
+#ui-multiplayer div {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+}
+
+#ui-multiplayer hr {
+    position: absolute;
+    top: 12%;
+    left: 44%;
+}
+
+#ui-multiplayer form {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+}
+
+#ui-multiplayer form #input-room-id {
+    position: absolute;
+    outline: none;
+    border-radius: 17px;
+    border: 2px solid lightslategrey;
+    color: slategray;
+    background-color: transparent;
+    letter-spacing: 12px;
+    font-size: 30px;
+    padding: 10px 0 10px 30px;
+    top: 40px;
+    width: 140px;
+}
+
+#ui-multiplayer #prompt{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: -20px;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#confetti {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+}
+
+#confetti div {
+    position: absolute;
+    will-change: transform;
+}

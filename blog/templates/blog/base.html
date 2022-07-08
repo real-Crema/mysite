@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static "blog/css/blog.css" %}" rel="stylesheet">
+    <link href="{% static "blog/css/animation.css" %}" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <ul class="gn-list">
+            <li class="search">
+                <a href=""><img src="{% static "blog/icons/search.png" %}" alt="search" height="16" width="16"></a>
+            </li>
+            {% block global_nav %}{% endblock %}
+        </ul>
+    </nav>
+    <main>
+        <section id="content">
+            {% block content %}
+            {% endblock %}
+        </section>
+        <section id="sidebar" class="card">
+            <section id="avatar">
+                <img src="{% static "blog/icons/avatar1.png" %}" alt="Avatar" height="200" width="200">
+                <img src="{% static "blog/icons/avatar2.png" %}" alt="Avatar" height="200" width="200">
+            </section>
+            <p>要做的事，还有很多。</p>
+        </section>
+    </main>
+</body>
+</html>
